@@ -23,7 +23,7 @@ public class WebSocketSessionListener {
     private final Map<String, String> sessions = new ConcurrentHashMap<>();
 
     @Value("${jwt.secret-key}")
-    private String key;
+    private String secretKey;
 
     /**
      * 세션 연결 이벤트 리스너
@@ -64,9 +64,9 @@ public class WebSocketSessionListener {
      */
     public String extractUserIdFromToken(String token) {
         try {
-            SecretKey secretKey = Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
+            SecretKey key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
             Claims claims = Jwts.parser()
-                    .verifyWith(secretKey)
+                    .verifyWith(key)
                     .build()
                     .parseSignedClaims(token)
                     .getPayload();
