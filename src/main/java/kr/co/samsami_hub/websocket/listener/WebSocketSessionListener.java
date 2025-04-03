@@ -37,7 +37,7 @@ public class WebSocketSessionListener {
             String token = authenticationHeader.getFirst().replace("Bearer ", "");
             String userId = extractUserIdFromToken(token);
 
-            if (StringUtil.isNullOrEmpty(userId)) sessions.put(userId, accessor.getSessionId());
+            if (!StringUtil.isNullOrEmpty(userId)) sessions.put(userId, accessor.getSessionId());
         }
     }
 
@@ -53,7 +53,7 @@ public class WebSocketSessionListener {
             String token = authenticationHeader.getFirst().replace("Bearer ", "");
             String userId = extractUserIdFromToken(token);
 
-            if (StringUtil.isNullOrEmpty(userId)) sessions.remove(userId);
+            if (!StringUtil.isNullOrEmpty(userId)) sessions.remove(userId);
         }
     }
 

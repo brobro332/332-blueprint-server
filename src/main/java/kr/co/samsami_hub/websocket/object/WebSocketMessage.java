@@ -7,16 +7,15 @@ import java.time.LocalDateTime;
 
 @Builder
 @Getter
-public class ChatMessage {
+public class WebSocketMessage {
     public enum MessageType {
-        JOIN, CHAT, LEAVE
+        ENTER, CHAT, LEAVE
     }
 
-    private String messageId;
     private MessageType type;
     private String content;
     private String senderId;
+    private String senderName;
     private String roomId;
     private LocalDateTime timestamp;
-    private boolean isRead;
 }
