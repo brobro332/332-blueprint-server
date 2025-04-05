@@ -20,11 +20,31 @@ public class UserService {
     private static final String USER_KEY_PREFIX = "user:";
 
     public void setUser(UserDto dto) {
-        template.opsForValue().set(USER_KEY_PREFIX + dto.getEmail(), dto);
+        String key = "user:" + dto.getEmail();
+
+        template.opsForHash().put(key, "email", dto.getEmail());
+        template.opsForHash().put(key, "name", dto.getName());
+        template.opsForHash().put(key, "description", dto.getDescription());
+        template.opsForHash().put(key, "phoneNumber", dto.getPhoneNumber());
+        template.opsForHash().put(key, "service", dto.getService());
+
+        template.opsForSet().add("user:keys", key);
     }
 
     public UserDto getUser(String email) {
-        return (UserDto) template.opsForValue().get(USER_KEY_PREFIX + email);
+        String key = USER_KEY_PREFIX + email;
+        Map<Object, Object> map = template.opsForHash().entries(key);
+
+        if (map.isEmpty()) return null;
+
+        UserDto dto = new UserDto();
+        dto.setEmail((String) map.get("email"));
+        dto.setName((String) map.get("name"));
+        dto.setPhoneNumber((String) map.get("phoneNumber"));
+        dto.setService((String) map.get("service"));
+        dto.setDescription((String) map.get("description"));
+
+        return dto;
     }
 
     public Page<UserDto> getAllUserListPage(Pageable pageable) {
@@ -71,6 +91,9 @@ public class UserService {
     }
 
     public void deleteUser(String email) {
-        template.delete(USER_KEY_PREFIX + email);
+        String key = USER_KEY_PREFIX + email;
+
+        template.delete(key);
+        template.opsForSet().remove("user:keys", key);
     }
 }
