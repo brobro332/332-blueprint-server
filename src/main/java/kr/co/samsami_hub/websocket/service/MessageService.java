@@ -1,7 +1,7 @@
 package kr.co.samsami_hub.websocket.service;
 
 import kr.co.samsami_hub.websocket.Message;
-import kr.co.samsami_hub.websocket.MessageRepository;
+import kr.co.samsami_hub.websocket.repository.MessageRepository;
 import kr.co.samsami_hub.websocket.MessageType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
