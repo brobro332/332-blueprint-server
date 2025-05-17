@@ -1,0 +1,24 @@
+server:
+  port: ${PORT}
+  address: ${ADDRESS}
+
+spring:
+  data:
+    mongodb:
+      username: ${DATA_MONGODB_USERNAME}
+      password: ${DATA_MONGODB_PASSWORD}
+      authentication-database: ${DATA_MONGODB_AUTHENTICATION_DATABASE}
+      database: ${DATA_MONGODB_DATABASE}
+      uri: ${DATA_MONGODB_URI}
+    redis:
+      host: ${DATA_REDIS_HOST}
+      port: ${DATA_REDIS_PORT}
+      password: ${DATA_REDIS_PASSWORD}
+
+logging:
+  level:
+    org.springframework.web.socket: DEBUG
+    org.springframework.messaging.simp: DEBUG
+
+jwt:
+  secret-key: dfaskl#g$!$das5kgk%%lvd3n3s4dsk23n4d5v6d7s8vjl5dvjvne$$#kwjevv
