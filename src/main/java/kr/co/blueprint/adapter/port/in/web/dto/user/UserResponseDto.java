@@ -1,13 +1,12 @@
-package kr.co.blueprint.adapter.port.in.web.dto;
+package kr.co.blueprint.adapter.port.in.web.dto.user;
 
 import lombok.*;
 
-@Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
-    @NonNull
+@Builder
+public class UserResponseDto {
     private String email;
     private String name;
     private String description;
