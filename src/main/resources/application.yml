@@ -14,7 +14,13 @@ spring:
       host: ${DATA_REDIS_HOST}
       port: ${DATA_REDIS_PORT}
       password: ${DATA_REDIS_PASSWORD}
-
+  kafka:
+    consumer:
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: org.springframework.kafka.support.serializer.JsonDeserializer
 logging:
   level:
     org.springframework.web.socket: DEBUG

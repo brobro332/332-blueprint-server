@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class UserRequestDto {
-    @NonNull
     private String email;
     private String name;
     private String description;

@@ -19,7 +19,7 @@ public class KafkaUserEventProducer implements UserEventPort {
     }
 
     @Override
-    public void publishDeleteUserEvent(String email) {
-        kafkaTemplate.send("user.delete", email);
+    public void publishDeleteUserEvent(UserRequestDto dto) {
+        kafkaTemplate.send("user.delete", UserMapper.toJson(dto));
     }
 }

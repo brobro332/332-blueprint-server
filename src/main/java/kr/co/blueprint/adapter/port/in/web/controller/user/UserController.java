@@ -9,7 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,7 +18,7 @@ public class UserController {
     private final UserService service;
 
     @PostMapping
-    public ResponseEntity<Void> saveUser(@RequestBody @Validated UserRequestDto user) {
+    public ResponseEntity<Void> saveUser(@RequestBody UserRequestDto user) {
         service.setUser(user);
         return ResponseEntity.ok().build();
     }
@@ -40,9 +39,9 @@ public class UserController {
         return ResponseEntity.ok(allUserListPage);
     }
 
-    @DeleteMapping("/{email}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String email) {
-        service.deleteUser(email);
+    @DeleteMapping
+    public ResponseEntity<Void> deleteUser(@RequestBody UserRequestDto dto) {
+        service.deleteUser(dto);
         return ResponseEntity.ok().build();
     }
 }

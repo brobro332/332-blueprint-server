@@ -27,7 +27,7 @@ public class UserService {
         return repository.getAllPage(pageable);
     }
 
-    public void deleteUser(String email) {
-        port.publishDeleteUserEvent(email);
+    public void deleteUser(UserRequestDto dto) {
+        port.publishDeleteUserEvent(dto);
     }
 }
