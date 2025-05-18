@@ -1,5 +1,7 @@
 package kr.co.blueprint.common.mapper;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.blueprint.adapter.port.in.web.dto.user.UserResponseDto;
 
 import java.util.Map;
@@ -25,5 +27,14 @@ public class UserMapper {
             .phoneNumber((String) map.get("service"))
             .service((String) map.get("description"))
             .build();
+    }
+
+    public static String toJson(Object object) {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(object);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("JSON 변환 실패", e);
+        }
     }
 }

@@ -1,7 +1,7 @@
-package kr.co.blueprint.domain.port.in.mongodb.message;
+package kr.co.blueprint.domain.port.out.mongodb.message;
 
 import kr.co.blueprint.domain.entity.message.MessageDocument;
 
-public interface MessageMongodbRepository {
+public interface MessageMongodbPort {
     void save(MessageDocument messageDocument);
 }

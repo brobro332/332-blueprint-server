@@ -3,7 +3,7 @@ package kr.co.blueprint.adapter.port.out.redis.user;
 import kr.co.blueprint.adapter.port.in.web.dto.user.UserRequestDto;
 import kr.co.blueprint.adapter.port.in.web.dto.user.UserResponseDto;
 import kr.co.blueprint.common.mapper.UserMapper;
-import kr.co.blueprint.domain.port.in.redis.user.UserRedisRepository;
+import kr.co.blueprint.domain.port.out.redis.user.UserRedisPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -15,7 +15,7 @@ import java.util.*;
 
 @Repository
 @RequiredArgsConstructor
-public class UserRedisRepositoryImpl implements UserRedisRepository {
+public class UserRedisPortImpl implements UserRedisPort {
     private final RedisTemplate<String, Object> template;
     private static final String USER_KEY_PREFIX = "user:";
     private static final String USER_KEYS_SET = "user:keys";
