@@ -3,7 +3,7 @@ package kr.co.blueprint.application.service;
 import kr.co.blueprint.adapter.port.in.web.dto.message.MessageRequestDto;
 import kr.co.blueprint.common.mapper.MessageMapper;
 import kr.co.blueprint.domain.entity.message.MessageDocument;
-import kr.co.blueprint.domain.port.in.mongodb.message.MessageMongodbRepository;
+import kr.co.blueprint.domain.port.out.mongodb.message.MessageMongodbPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MessageService {
     private final SimpMessagingTemplate template;
-    private final MessageMongodbRepository repository;
+    private final MessageMongodbPort repository;
 
     public void sendMessage(MessageRequestDto message) {
         MessageDocument inputMessage = MessageMapper.toGeneralMessageDocument(message);

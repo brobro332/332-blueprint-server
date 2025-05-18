@@ -21,9 +21,9 @@ bin/
 .idea
 *.iws
 *.iml
-*.yml
 *.properties
 *.ipr
+docker/.env
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
