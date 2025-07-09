@@ -32,5 +32,3 @@
     </td>
   </tr>
 </table>
-
-![제목 없음-2025-05-02-1348](https://github.com/user-attachments/assets/0d975d30-d1a5-437c-8999-07c7ddd3d6bf)
